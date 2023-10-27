@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
         //显示收到数据
         QAbstractButton::connect(m_tcpSocket1,&QTcpSocket::readyRead,&wechat,[&](){
             QByteArray bt=m_tcpSocket1->readAll();
-            pUi->serverRecEdit->append(bt.);
+            pUi->serverRecEdit->append(bt);
             qDebug()<<"服务端："<<bt;
         });
     });
