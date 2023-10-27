@@ -29,11 +29,11 @@ int main(int argc, char *argv[])
         pUi->stackedWidget->setCurrentIndex(0);
     });
     QAbstractButton::connect(pUi->clientSendButton ,&QToolButton::clicked,&wechat,[&]() {
-        auto sendData = pUi->clientSendEdit->toPlainText().toLocal8Bit();
+        auto sendData = pUi->clientSendEdit->toPlainText().toUtf8();
         m_tcpSocket->write(sendData);
     });
     QAbstractButton::connect(pUi->serverSendButton ,&QToolButton::clicked,&wechat,[&]() {
-        auto sendData = pUi->serverSendEdit->toPlainText().toLocal8Bit();
+        auto sendData = pUi->serverSendEdit->toPlainText().toUtf8();
         m_tcpSocket1->write(sendData);
     });
 
