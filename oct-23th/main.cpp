@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
         auto sendData = pUi->clientSendEdit->toPlainText().toUtf8();
         m_tcpSocket->write(sendData);
     });
+
     QAbstractButton::connect(pUi->serverSendButton ,&QToolButton::clicked,&wechat,[&]() {
         auto sendData = pUi->serverSendEdit->toPlainText().toUtf8();
         m_tcpSocket1->write(sendData);
@@ -100,7 +101,8 @@ int main(int argc, char *argv[])
         }
     });
 
-    //开始监听
+    //开始监听 
+
     QAbstractButton::connect(pUi->monitorButton ,&QToolButton::clicked,&wechat,[&]() {
         if(m_tcpServer == nullptr){
             m_tcpServer=new QTcpServer(&wechat);
