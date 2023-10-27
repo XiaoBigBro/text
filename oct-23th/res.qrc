@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>oct-23th/icon/QQ.png</file>
-        <file>oct-23th/icon/x.png</file>
+        <file>icon/QQ.png</file>
+        <file>icon/x.png</file>
     </qresource>
 </RCC>
