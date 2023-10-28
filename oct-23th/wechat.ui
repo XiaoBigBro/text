@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Widget</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background:rgb(245, 245, 245)</string>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout_7">
    <property name="spacing">
     <number>0</number>
@@ -150,10 +153,10 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="page">
-      <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="2,8">
+      <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="2,0,8">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -171,9 +174,12 @@
        </property>
        <item>
         <widget class="QFrame" name="frame">
+         <property name="styleSheet">
+          <string notr="true">background:rgb(247, 247, 247)</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,12">
           <property name="spacing">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="leftMargin">
            <number>0</number>
@@ -188,10 +194,13 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QFrame" name="frame_2">
+           <widget class="QWidget" name="widget_2" native="true">
+            <property name="styleSheet">
+             <string notr="true">background:rgb(247, 247, 247)</string>
+            </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <property name="spacing">
-              <number>0</number>
+              <number>2</number>
              </property>
              <property name="leftMargin">
               <number>0</number>
@@ -241,7 +250,7 @@
                <item>
                 <widget class="QLineEdit" name="clientPortEdit">
                  <property name="text">
-                  <string>456</string>
+                  <string>1234</string>
                  </property>
                 </widget>
                </item>
@@ -249,6 +258,9 @@
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <property name="spacing">
+                <number>0</number>
+               </property>
                <item>
                 <spacer name="horizontalSpacer_7">
                  <property name="orientation">
@@ -304,8 +316,15 @@
         </widget>
        </item>
        <item>
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QFrame" name="frame">
-         <layout class="QVBoxLayout" name="verticalLayout_5" stretch="3">
+         <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0">
           <property name="spacing">
            <number>0</number>
           </property>
@@ -323,7 +342,7 @@
           </property>
           <item>
            <widget class="QWidget" name="widget_6" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="36,1,6,1">
+            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="36,0,0,6,1">
              <property name="spacing">
               <number>3</number>
              </property>
@@ -340,62 +359,88 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QTextEdit" name="clientRecEdit"/>
+              <widget class="QTextEdit" name="clientRecEdit">
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+              </widget>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_5">
-               <item>
-                <widget class="QToolButton" name="toolButton_17">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="toolButton_18">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="toolButton_19">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="toolButton_20">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QToolButton" name="toolButton_21">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              <widget class="Line" name="line_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="clientSendEdit"/>
+              <widget class="QFrame" name="">
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="QToolButton" name="toolButton_17">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_18">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_19">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_20">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_21">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="clientSendEdit">
+               <property name="styleSheet">
+                <string notr="true">background:rgb(245, 245, 245)</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+              </widget>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -405,7 +450,7 @@
                   <enum>Qt::Horizontal</enum>
                  </property>
                  <property name="sizeType">
-                  <enum>QSizePolicy::Preferred</enum>
+                  <enum>QSizePolicy::Expanding</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -439,7 +484,7 @@
       </layout>
      </widget>
      <widget class="QWidget" name="page_2">
-      <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,8">
+      <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,0,8">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -457,7 +502,10 @@
        </property>
        <item>
         <widget class="QFrame" name="frame_3">
-         <layout class="QVBoxLayout" name="verticalLayout_10" stretch="1,9">
+         <property name="styleSheet">
+          <string notr="true">background:rgb(247, 247, 247)</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_10" stretch="1,12">
           <property name="spacing">
            <number>0</number>
           </property>
@@ -474,10 +522,13 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QFrame" name="frame_4">
+           <widget class="QWidget" name="widget_4" native="true">
+            <property name="styleSheet">
+             <string notr="true">background:rgb(247, 247, 247)</string>
+            </property>
             <layout class="QVBoxLayout" name="verticalLayout_6">
              <property name="spacing">
-              <number>0</number>
+              <number>2</number>
              </property>
              <property name="leftMargin">
               <number>0</number>
@@ -492,56 +543,52 @@
               <number>0</number>
              </property>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_7">
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
                <property name="spacing">
-                <number>2</number>
+                <number>0</number>
                </property>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_9">
-                 <property name="spacing">
-                  <number>0</number>
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>本机IP：</string>
                  </property>
-                 <item>
-                  <widget class="QLabel" name="label_3">
-                   <property name="text">
-                    <string>本机IP：</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="serverIpEdit">
-                   <property name="readOnly">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_10">
-                 <property name="spacing">
-                  <number>0</number>
+                <widget class="QLineEdit" name="serverIpEdit">
+                 <property name="readOnly">
+                  <bool>true</bool>
                  </property>
-                 <item>
-                  <widget class="QLabel" name="label_4">
-                   <property name="text">
-                    <string>监听端口：</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="serverPortEdit">
-                   <property name="text">
-                    <string>456</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>监听端口：</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="serverPortEdit">
+                 <property name="text">
+                  <string>1234</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_13">
+               <property name="spacing">
+                <number>0</number>
+               </property>
                <item>
                 <spacer name="horizontalSpacer">
                  <property name="orientation">
@@ -597,6 +644,13 @@
         </widget>
        </item>
        <item>
+        <widget class="Line" name="line_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QFrame" name="frame_5">
          <layout class="QVBoxLayout" name="verticalLayout_8" stretch="3">
           <property name="spacing">
@@ -616,7 +670,7 @@
           </property>
           <item>
            <widget class="QWidget" name="widget_7" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_9" stretch="36,1,6,1">
+            <layout class="QVBoxLayout" name="verticalLayout_9" stretch="36,0,0,6,1">
              <property name="spacing">
               <number>3</number>
              </property>
@@ -633,62 +687,97 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QTextEdit" name="serverRecEdit"/>
+              <widget class="QTextEdit" name="serverRecEdit">
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
+              </widget>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_11">
-               <item>
-                <widget class="QToolButton" name="toolButton_23">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="toolButton_24">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="toolButton_25">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="toolButton_26">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_5">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QToolButton" name="toolButton_27">
-                 <property name="text">
-                  <string>...</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              <widget class="Line" name="line">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="serverSendEdit"/>
+              <widget class="QFrame" name="">
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Sunken</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <item>
+                 <widget class="QToolButton" name="toolButton_23">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_24">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_25">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_26">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_27">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="serverSendEdit">
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
+               <property name="tabChangesFocus">
+                <bool>false</bool>
+               </property>
+               <property name="lineWrapMode">
+                <enum>QTextEdit::WidgetWidth</enum>
+               </property>
+              </widget>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -698,7 +787,7 @@
                   <enum>Qt::Horizontal</enum>
                  </property>
                  <property name="sizeType">
-                  <enum>QSizePolicy::Preferred</enum>
+                  <enum>QSizePolicy::Expanding</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
