@@ -9,9 +9,13 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 TARGET = loginwidget
 SOURCES += \
-    main.cpp
+    main.cpp \
+    tcp_client_manage.cpp \
+    tcp_server_manage.cpp
 
-HEADERS +=
+HEADERS += \
+    tcp_client_manage.h \
+    tcp_server_manage.h
 
 FORMS += \
     wechat.ui
