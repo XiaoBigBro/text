@@ -1,2 +1,5 @@
 /build
+/build-oct-23th-Desktop_Qt_6_3_2_MinGW_64_bit-Debug
+/build-oct-23th-Desktop_Qt_6_3_2_MinGW_64_bit-Profile
+/build-oct-23th-Desktop_Qt_6_3_2_MinGW_64_bit-Release
 *.user

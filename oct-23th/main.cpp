@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
         }
     });
 
-    //开始监听 
+    //开始监听
 
     QAbstractButton::connect(pUi->monitorButton ,&QToolButton::clicked,&wechat,[&]() {
         if(m_tcpServer == nullptr){
@@ -151,9 +151,5 @@ int main(int argc, char *argv[])
             }
         }
     });
-
-
-
-
     return a.exec();
 }
