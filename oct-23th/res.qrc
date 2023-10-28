@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>icon/QQ.png</file>
+        <file>icon/client2.png</file>
+        <file>icon/server2.png</file>
         <file>icon/x.png</file>
     </qresource>
 </RCC>
