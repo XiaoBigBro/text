@@ -14,7 +14,7 @@ class tag : public QToolButton
 
 public:
     explicit tag(QWidget *parent = nullptr,
-                 const QString &hostName = "127.0.0.1", quint16 port = 80);
+                 const QString &hostName = "127.0.0.1", const QString &port = "80");
     ~tag();
 
 private:

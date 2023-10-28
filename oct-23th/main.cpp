@@ -63,7 +63,8 @@ int main(int argc, char *argv[])
     QAbstractButton::connect(pUi->requestButton ,&QToolButton::clicked,pWidget,[&]() {
 
         auto client = new tcp_client_manage(pWidget);
-        auto *pTag = new tag(pWidget);
+
+        auto *pTag = new tag(pWidget,client->address(),client->port());
         pUi->clientWidgetLayout->addWidget(pTag);
     });
 

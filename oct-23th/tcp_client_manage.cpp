@@ -40,3 +40,13 @@ void tcp_client_manage::close()
         mSocket->close();
 }
 
+QString tcp_client_manage::address()
+{
+    return mSocket->localAddress().toString();
+}
+
+QString tcp_client_manage::port()
+{
+    return QString::number(mSocket->localPort());
+}
+
