@@ -3,5 +3,6 @@
         <file>icon/client2.png</file>
         <file>icon/server2.png</file>
         <file>icon/x.png</file>
+        <file>icon/wechat.jpg</file>
     </qresource>
 </RCC>

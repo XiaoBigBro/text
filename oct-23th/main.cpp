@@ -13,6 +13,8 @@ QTcpServer* m_tcpServer;    //tcp服务端
 QTcpSocket* m_tcpSocket1;    //tcp套接字
 QTcpSocket* m_tcpSocket;    //tcp客户端
 
+Ui_Widget *pUi ;
+
 QString get_local_addresses(int mVersions){
 
     QHostInfo hostInfo = QHostInfo::fromName(QHostInfo::localHostName());
@@ -30,7 +32,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Ui_Widget *pUi = new Ui_Widget();
+    pUi = new Ui_Widget();
     QWidget wechat;
     pUi->setupUi(&wechat);
     wechat.show();
@@ -43,15 +45,12 @@ int main(int argc, char *argv[])
         pUi->stackedWidget->setCurrentIndex(0);
     });
     //发送信息
-    QAbstractButton::connect(pUi->clientSendButton ,&QToolButton::clicked,&wechat,[&]() {
-        auto sendData = pUi->clientSendEdit->toPlainText().toUtf8();
+    QAbstractButton::connect(pUi->sendButton ,&QToolButton::clicked,&wechat,[&]() {
+        auto sendData = pUi->sendEdit->toPlainText().toUtf8();
         m_tcpSocket->write(sendData);
-    });
-
-    QAbstractButton::connect(pUi->serverSendButton ,&QToolButton::clicked,&wechat,[&]() {
-        auto sendData = pUi->serverSendEdit->toPlainText().toUtf8();
         m_tcpSocket1->write(sendData);
     });
+
 
     //请求连接
     QAbstractButton::connect(pUi->requestButton ,&QToolButton::clicked,&wechat,[&]() {
@@ -64,17 +63,17 @@ int main(int argc, char *argv[])
                 QByteArray bt;
                 bt.resize(m_tcpSocket->bytesAvailable());
                 m_tcpSocket->read(bt.data(),bt.size());
-                pUi->clientRecEdit->append(bt);
+                pUi->recEdit->append(bt);
                 //将客户端反馈的数据显示到标签上
                 qDebug()<<"客户端："<<bt;
             });
 
             QAbstractAnimation::connect(m_tcpSocket, &QTcpSocket::connected,&wechat,[&](){
-                pUi->clientRecEdit->append("成功和服务器进行连接");
+                pUi->recEdit->append("成功和服务器进行连接");
                 pUi->requestButton->setText("断开连接");
             });
             QAbstractAnimation::connect(m_tcpSocket, &QTcpSocket::disconnected,&wechat,[&](){
-                pUi->clientRecEdit->append("已断开服务器连接");
+                pUi->recEdit->append("已断开服务器连接");
             });
             // 将代理类型改为 NoProxy
             m_tcpSocket->setProxy(QNetworkProxy::NoProxy);
@@ -89,7 +88,7 @@ int main(int argc, char *argv[])
                 m_tcpSocket->close();
                 m_tcpSocket->deleteLater();
                 m_tcpSocket = nullptr;
-                pUi->clientRecEdit->append("连接主机失败");
+                pUi->recEdit->append("连接主机失败");
             }
         }else{
             if(m_tcpSocket->isOpen()){
@@ -114,7 +113,7 @@ int main(int argc, char *argv[])
                 m_tcpServer->close();
                 m_tcpServer->deleteLater();
                 m_tcpServer = nullptr;
-                pUi->serverRecEdit->append(m_tcpServer->errorString());
+                pUi->recEdit->append(m_tcpServer->errorString());
                 return;
             }
             QAbstractButton::connect(m_tcpServer,&QTcpServer::newConnection,&wechat,[&](){
@@ -126,10 +125,10 @@ int main(int argc, char *argv[])
                 //显示收到数据
                 QAbstractButton::connect(m_tcpSocket1,&QTcpSocket::readyRead,&wechat,[&](){
                     QByteArray bt=m_tcpSocket1->readAll();
-                    pUi->serverRecEdit->append(bt);
+                    pUi->recEdit->append(bt);
                     qDebug()<<"服务端收到数据："<<bt;
                 });
-                pUi->serverRecEdit->append("新客户端接入:" + m_tcpSocket1->peerAddress().toString()+
+                pUi->recEdit->append("新客户端接入:" + m_tcpSocket1->peerAddress().toString()+
                                            QString::number(m_tcpSocket1->peerPort()));
             });
             QAbstractButton::connect(m_tcpServer,&QTcpServer::newConnection,&wechat,[&](){
@@ -137,7 +136,7 @@ int main(int argc, char *argv[])
                 m_tcpSocket1->write(str.toUtf8());
             });
 
-            pUi->serverRecEdit->append("开始监听端口:" + QString::number(mPort));
+            pUi->recEdit->append("开始监听端口:" + QString::number(mPort));
 
             pUi->monitorButton->setText("停止监听");
         }else{
@@ -146,7 +145,7 @@ int main(int argc, char *argv[])
                 m_tcpServer->deleteLater();
                 m_tcpServer = nullptr;
                 pUi->monitorButton->setText("开始监听");
-                pUi->serverRecEdit->append("已停止监听");
+                pUi->recEdit->append("已停止监听");
             }
         }
     });
