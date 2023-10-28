@@ -10,14 +10,17 @@ CONFIG += c++17
 TARGET = loginwidget
 SOURCES += \
     main.cpp \
+    tag.cpp \
     tcp_client_manage.cpp \
     tcp_server_manage.cpp
 
 HEADERS += \
+    tag.h \
     tcp_client_manage.h \
     tcp_server_manage.h
 
 FORMS += \
+    tag.ui \
     wechat.ui
 
 # Default rules for deployment.

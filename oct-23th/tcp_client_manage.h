@@ -15,11 +15,15 @@ class tcp_client_manage : public QObject
 public:
     explicit tcp_client_manage(QObject *parent = nullptr ,
                                const QString &hostName = "127.0.0.1", quint16 port = 80);
+    void close(void);
 
 private:
     QTcpSocket* mSocket;    //tcp客户端
+    QByteArray  data;    //tcp客户端
 
-
+signals:
+    void connected();
+    void disconnected();
 };
 
 #endif // TCP_CLIENT_MANAGE_H

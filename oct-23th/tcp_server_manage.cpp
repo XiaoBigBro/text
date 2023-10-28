@@ -7,7 +7,7 @@ tcp_server_manage::tcp_server_manage(QObject *parent)
 
     //新客户端连接
     connect(mServer,&QTcpServer::newConnection,parent,[&](){
-        mSocket = mServer->nextPendingConnection();
+        QTcpSocket* mSocket = mServer->nextPendingConnection();
 
         QString clientAddress = mSocket->peerAddress().toString();
         QString clientPort = QString::number(mSocket->peerPort());
@@ -27,6 +27,8 @@ tcp_server_manage::tcp_server_manage(QObject *parent)
         mSocket->write(str.toUtf8());
         qDebug()<<"用户接入:";
         qDebug()<<("ip: " + clientAddress +"    端口: "+ clientPort);
+
+        socketList.append(mSocket);
     });
 
 }
@@ -54,14 +56,14 @@ bool tcp_server_manage::stop_listen(void)
     return isListen;
 }
 
-qint64 tcp_server_manage::send(QTcpSocket &targetSocket, const char *data)
+qint64 tcp_server_manage::send(QTcpSocket* &targetSocket, const char *data)
 {
-    if(mServer->isListening() && targetSocket.isOpen()){
+    if(mServer->isListening() && targetSocket->isOpen()){
         qDebug()<<"发送失败，检查连接";
         return -1;
     }
 
-    return mSocket->write(data);
+    return targetSocket->write(data);
 
 }
 

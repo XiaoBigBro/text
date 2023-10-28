@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1045</width>
-    <height>640</height>
+    <height>699</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -185,6 +185,18 @@
       </item>
       <item>
        <widget class="QToolButton" name="toolButton_7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="styleSheet">
          <string notr="true">background:rgb(190, 192, 193)</string>
         </property>
@@ -276,7 +288,7 @@
              <number>0</number>
             </property>
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,10">
+             <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,0">
               <item>
                <widget class="QFrame" name="frame">
                 <property name="sizePolicy">
@@ -396,7 +408,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QWidget" name="clientWidget_2" native="true">
+               <widget class="QWidget" name="clientWidget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                   <horstretch>0</horstretch>
@@ -428,6 +440,13 @@
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
+                 <item>
+                  <layout class="QVBoxLayout" name="clientWidgetLayout">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                  </layout>
+                 </item>
                 </layout>
                </widget>
               </item>
@@ -441,7 +460,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,10">
+             <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
               <item>
                <widget class="QFrame" name="frame_3">
                 <property name="sizePolicy">
@@ -590,6 +609,13 @@
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
+                 <item>
+                  <layout class="QVBoxLayout" name="serveWidgetLayout">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                  </layout>
+                 </item>
                 </layout>
                </widget>
               </item>
@@ -658,7 +684,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QFrame" name="">
+              <widget class="QFrame" name="frame">
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
@@ -669,7 +695,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_17">
                   <property name="text">
-                   <string>...</string>
+                   <string>a</string>
                   </property>
                   <property name="autoRaise">
                    <bool>true</bool>
@@ -679,7 +705,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_18">
                   <property name="text">
-                   <string>...</string>
+                   <string>b</string>
                   </property>
                   <property name="autoRaise">
                    <bool>true</bool>
@@ -689,7 +715,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_19">
                   <property name="text">
-                   <string>...</string>
+                   <string>c</string>
                   </property>
                   <property name="autoRaise">
                    <bool>true</bool>
@@ -699,7 +725,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_20">
                   <property name="text">
-                   <string>...</string>
+                   <string>d</string>
                   </property>
                   <property name="autoRaise">
                    <bool>true</bool>
@@ -787,7 +813,7 @@
       </layout>
      </widget>
      <widget class="QWidget" name="page_2">
-      <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
        <property name="spacing">
         <number>0</number>
        </property>

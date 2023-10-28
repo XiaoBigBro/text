@@ -1,14 +1,15 @@
 #include <QApplication>
 #include <QAbstractSocket>
+#include <QPushButton>
 
 #include "ui_wechat.h"
 
+#include "tag.h"
 #include "tcp_server_manage.h"
 #include "tcp_client_manage.h"
 
 
-
-Ui_Widget *pUi ;
+Ui_Widget *pUi;
 QWidget *pWidget;
 
 
@@ -34,8 +35,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    pUi = new Ui_Widget();
-    pWidget = new QWidget();
+    pUi = new Ui_Widget;
+    pWidget = new QWidget;
 
     pUi->setupUi(pWidget);
     pWidget->show();
@@ -43,10 +44,10 @@ int main(int argc, char *argv[])
     auto myServer = new tcp_server_manage(pWidget);
     myServer->start_listen();
     auto client1 = new tcp_client_manage(pWidget);
-
+    client1->close();
     pUi->serverIpEdit->setText(get_local_addresses(QAbstractSocket::IPv4Protocol));
     //主页面切换
-    QAbstractButton::connect(pUi->serverButton ,&QToolButton::clicked,pWidget,[&]() {
+    QAbstractAnimation::connect(pUi->serverButton ,&QToolButton::clicked,pWidget,[&]() {
         pUi->stackedWidget->setCurrentIndex(1);
     });
     QAbstractButton::connect(pUi->clientButton ,&QToolButton::clicked,pWidget,[&]() {
@@ -61,6 +62,9 @@ int main(int argc, char *argv[])
     //请求连接
     QAbstractButton::connect(pUi->requestButton ,&QToolButton::clicked,pWidget,[&]() {
 
+        auto client = new tcp_client_manage(pWidget);
+        auto *pTag = new tag(pWidget);
+        pUi->clientWidgetLayout->addWidget(pTag);
     });
 
     return a.exec();
