@@ -1,20 +1,19 @@
 #ifndef TAG_H
 #define TAG_H
 
-#include "qtoolbutton.h"
+#include "qlistwidget.h"
 #include <QWidget>
 
 namespace Ui {
 class tag;
 }
 
-class tag : public QToolButton
+class tag : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit tag(QWidget *parent = nullptr,
-                 const QString &hostName = "127.0.0.1", const QString &port = "80");
+    explicit tag(QListWidget* mListWidget ,const QString &hostName = "127.0.0.1", const QString &port = "80");
     ~tag();
 
 private:

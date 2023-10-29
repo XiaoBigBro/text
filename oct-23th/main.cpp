@@ -63,8 +63,9 @@ int main(int argc, char *argv[])
 
         auto client = new tcp_client_manage(pWidget);
 
-        auto *pTag = new tag(pWidget,client->address(),client->port());
-        pUi->clientWidgetLayout->addWidget(pTag);
+
+        tag *widgetItem=new tag(pUi->clientView,client->address(),client->port());
+
     });
 
 
