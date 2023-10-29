@@ -15,7 +15,9 @@ class tcp_client_manage : public QObject
 public:
     explicit tcp_client_manage(QObject *parent = nullptr ,
                                const QString &hostName = "127.0.0.1", quint16 port = 80);
+
     void close(void);
+    void clear(void);
     QString local_address(void);
     quint16 local_port(void);
 

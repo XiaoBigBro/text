@@ -15,7 +15,7 @@ tcp_server_manage::tcp_server_manage(QObject *parent)
         connect(mSocket,&QTcpSocket::disconnected,mSocket,&QTcpSocket::deleteLater);
         connect(mSocket,&QTcpSocket::disconnected,mSocket,[=](){
             qDebug()<<"用户断开:";
-            qDebug()<<("ip: " + clientAddress +"    端口: "+ clientPort);
+            qDebug()<<("ip: " + clientAddress +"    端口: "+ QString::number(clientPort));
             emit disconnected(clientAddress , clientPort);
         });
 

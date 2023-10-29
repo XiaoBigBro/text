@@ -39,8 +39,15 @@ tcp_client_manage::tcp_client_manage(QObject *parent,const QString &hostName, qu
 
 void tcp_client_manage::close()
 {
-    qDebug()<<(mSocket==nullptr);
-//    mSocket->abort();
+    if(mSocket->isOpen())
+        mSocket->close();
+}
+
+void tcp_client_manage::clear()
+{
+    close();
+    delete mSocket;
+    delete this;
 }
 
 QString tcp_client_manage::local_address()
