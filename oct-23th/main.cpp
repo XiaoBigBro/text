@@ -78,6 +78,7 @@ int main(int argc, char *argv[])
             pUi->requestButton->setDisabled(false);
         });
     });
+
     QAbstractAnimation::connect(myServer ,&tcp_server_manage::newConnection,pWidget,[&](QString ip, quint16 port) {
         tag *pTag = new tag(pUi->servetView, ip, port);
         pUi->requestButton->setDisabled(false);
@@ -96,13 +97,6 @@ int main(int argc, char *argv[])
         }
     });
 
-
-
-
-
-
-
-
     //按键效果
     QAbstractAnimation::connect(pUi->serverButton ,&QToolButton::clicked,pWidget,[&]() {
         pUi->serverButton->setStyleSheet("background-color: rgb(0, 0, 0);"
@@ -112,10 +106,16 @@ int main(int argc, char *argv[])
                                          "border:2px solid #000000;"
                                          );
     });
+    QAbstractAnimation::connect(pUi->clientButton ,&QToolButton::clicked,pWidget,[&]() {
+        pUi->clientButton->setStyleSheet("background-color: rgb(0, 0, 0);"
+                                         "border-radius:6px;"
+                                         "border:2px solid #000000;");
+        pUi->serverButton->setStyleSheet(  "border-radius:6px;"
+                                         "border:2px solid #000000;"
+                                         );
+    });
 
-
-
-
+    pWidget->show();
 
     return a.exec();
 }
