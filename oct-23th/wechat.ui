@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1045</width>
-    <height>640</height>
+    <height>687</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -369,6 +369,9 @@
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color:#c3e9e5;</string>
+                     </property>
                      <property name="text">
                       <string>请求连接</string>
                      </property>
@@ -537,6 +540,9 @@
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color:#c3e9e5;</string>
+                     </property>
                      <property name="text">
                       <string>开始监听</string>
                      </property>
@@ -658,7 +664,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QFrame" name="">
+              <widget class="QFrame" name="frame">
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
@@ -768,6 +774,9 @@
                    <height>0</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color:#c3e9e5;</string>
+                 </property>
                  <property name="text">
                   <string>发送</string>
                  </property>
@@ -787,7 +796,7 @@
       </layout>
      </widget>
      <widget class="QWidget" name="page_2">
-      <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
        <property name="spacing">
         <number>0</number>
        </property>

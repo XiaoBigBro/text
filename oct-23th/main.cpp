@@ -7,7 +7,6 @@
 #include "tcp_client_manage.h"
 
 
-
 Ui_Widget *pUi ;
 QWidget *pWidget;
 
@@ -55,6 +54,7 @@ int main(int argc, char *argv[])
     //发送信息
     QAbstractButton::connect(pUi->sendButton ,&QToolButton::clicked,pWidget,[&]() {
         auto sendData = pUi->sendEdit->toPlainText().toUtf8();
+        pUi->sendEdit->clear();
     });
 
 
@@ -62,6 +62,30 @@ int main(int argc, char *argv[])
     QAbstractButton::connect(pUi->requestButton ,&QToolButton::clicked,pWidget,[&]() {
 
     });
+
+
+    //按键样式设置效果
+    QAbstractButton::connect(pUi->requestButton ,&QToolButton::pressed,pWidget,[&]() {
+        pUi->requestButton->setStyleSheet("background-color:#000000;");
+    });
+    QAbstractButton::connect(pUi->requestButton ,&QToolButton::released,pWidget,[&]() {
+         pUi->requestButton->setStyleSheet("background-color:#c3e9e5;");
+    });
+    QAbstractButton::connect(pUi->monitorButton ,&QToolButton::pressed,pWidget,[&]() {
+        pUi->monitorButton->setStyleSheet("background-color:#000000;");
+    });
+    QAbstractButton::connect(pUi->monitorButton ,&QToolButton::released,pWidget,[&]() {
+        pUi->monitorButton->setStyleSheet("background-color:#c3e9e5;");
+    });
+    QAbstractButton::connect(pUi->sendButton ,&QToolButton::pressed,pWidget,[&]() {
+        pUi->sendButton->setStyleSheet("background-color:#000000;");
+    });
+    QAbstractButton::connect(pUi->sendButton ,&QToolButton::released,pWidget,[&]() {
+        pUi->sendButton->setStyleSheet("background-color:#c3e9e5;");
+    });
+
+
+
 
     return a.exec();
 }
