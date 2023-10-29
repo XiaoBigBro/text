@@ -129,6 +129,20 @@
      </item>
     </layout>
    </item>
+   <item>
+    <widget class="QToolButton" name="closeButton">
+     <property name="text">
+      <string>...</string>
+     </property>
+     <property name="icon">
+      <iconset resource="res.qrc">
+       <normaloff>:/icon/x.png</normaloff>:/icon/x.png</iconset>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources>

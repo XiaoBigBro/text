@@ -13,11 +13,15 @@ class tag : public QWidget
     Q_OBJECT
 
 public:
-    explicit tag(QListWidget* mListWidget ,const QString &hostName = "127.0.0.1", const QString &port = "80");
+    explicit tag(QListWidget* mListWidget ,const QString &hostName = "127.0.0.1", const quint16 &port = 80);
     ~tag();
 
 private:
+    QListWidgetItem *item;
     Ui::tag *ui;
+
+signals:
+    void close();
 };
 
 #endif // TAG_H
