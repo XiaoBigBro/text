@@ -469,47 +469,7 @@ QToolButton::hover
                </widget>
               </item>
               <item>
-               <widget class="QWidget" name="clientWidget" native="true">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>250</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background:rgb(234, 232, 231)</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_10">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <layout class="QVBoxLayout" name="clientWidgetLayout">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
+               <widget class="QListWidget" name="clientView"/>
               </item>
              </layout>
             </item>
@@ -663,41 +623,7 @@ QToolButton::hover
                </widget>
               </item>
               <item>
-               <widget class="QWidget" name="serverWidget" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>250</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background:rgb(234, 232, 231)</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_9">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <layout class="QVBoxLayout" name="serveWidgetLayout">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
+               <widget class="QListWidget" name="servetView"/>
               </item>
              </layout>
             </item>

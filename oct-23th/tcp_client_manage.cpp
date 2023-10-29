@@ -8,45 +8,48 @@ tcp_client_manage::tcp_client_manage(QObject *parent,const QString &hostName, qu
     // 将代理类型改为 NoProxy
     mSocket->setProxy(QNetworkProxy::NoProxy);
 
-    connect(mSocket,&QTcpSocket::readyRead,parent,[&](){
+    connect(mSocket,&QTcpSocket::readyRead,this,[&](){
         QByteArray temp = mSocket->read(mSocket->bytesAvailable());
         data.append(temp);
         qDebug()<<"客户端："<<temp;
     });
 
-    connect(mSocket, &QTcpSocket::connected,parent,[&](){
+    connect(mSocket, &QTcpSocket::connected,this,[&](){
         qDebug()<<("成功和服务器进行连接");
         data.append("成功和服务器进行连接");
-        emit connected();
+        emit connected(local_address(), local_port());
     });
-    connect(mSocket, &QTcpSocket::disconnected,parent,[&](){
+
+    connect(mSocket, &QTcpSocket::disconnected,this,[&](){
         qDebug()<<("已断开服务器连接");
         data.append("已断开服务器连接");
-        emit disconnected();
+        emit disconnected(local_address(), local_port());
+    });
+
+    connect(mSocket, &QTcpSocket::errorOccurred,this,[&](QAbstractSocket::SocketError){
+        qDebug()<<mSocket->errorString();
+        emit errorOccurred(mSocket->errorString());
+        this->deleteLater();
     });
 
     //连接服务端
     mSocket->abort();
     mSocket->connectToHost(hostName,port);
-    int res = mSocket->waitForConnected(300);
-    if(res == false)
-        qDebug()<<("连接主机失败");
-
 }
 
 void tcp_client_manage::close()
 {
-    if(mSocket->isOpen())
-        mSocket->close();
+    qDebug()<<(mSocket==nullptr);
+//    mSocket->abort();
 }
 
-QString tcp_client_manage::address()
+QString tcp_client_manage::local_address()
 {
     return mSocket->localAddress().toString();
 }
 
-QString tcp_client_manage::port()
+quint16 tcp_client_manage::local_port()
 {
-    return QString::number(mSocket->localPort());
+    return mSocket->localPort();
 }
 

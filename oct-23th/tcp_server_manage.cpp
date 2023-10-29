@@ -10,12 +10,13 @@ tcp_server_manage::tcp_server_manage(QObject *parent)
         QTcpSocket* mSocket = mServer->nextPendingConnection();
 
         QString clientAddress = mSocket->peerAddress().toString();
-        QString clientPort = QString::number(mSocket->peerPort());
+        quint16 clientPort = mSocket->peerPort();
 
         connect(mSocket,&QTcpSocket::disconnected,mSocket,&QTcpSocket::deleteLater);
         connect(mSocket,&QTcpSocket::disconnected,mSocket,[=](){
             qDebug()<<"用户断开:";
             qDebug()<<("ip: " + clientAddress +"    端口: "+ clientPort);
+            emit disconnected(clientAddress , clientPort);
         });
 
         connect(mSocket,&QTcpSocket::readyRead,parent,[&](){
@@ -26,15 +27,22 @@ tcp_server_manage::tcp_server_manage(QObject *parent)
         QString str = "你好：" + clientAddress;
         mSocket->write(str.toUtf8());
         qDebug()<<"用户接入:";
-        qDebug()<<("ip: " + clientAddress +"    端口: "+ clientPort);
+        qDebug()<<("ip: " + clientAddress +"    端口: "+ QString::number(clientPort));
 
         socketList.append(mSocket);
+        emit newConnection(clientAddress , clientPort);
     });
 
 }
-
-bool tcp_server_manage::start_listen(const QHostAddress &address, quint16 port)
+bool tcp_server_manage::is_listen()
 {
+    return mServer->isListening();
+}
+
+void tcp_server_manage::start_listen(const QHostAddress &address, quint16 port)
+{
+    stop_listen();
+
     int isListen = mServer->listen(address,port);
 
     //启动失败
@@ -43,17 +51,13 @@ bool tcp_server_manage::start_listen(const QHostAddress &address, quint16 port)
     else
         qDebug()<<"开始监听端口:" + QString::number(port);
 
-    return isListen;
 }
 
-bool tcp_server_manage::stop_listen(void)
-{
-    int isListen = mServer->isListening();
-    //停止监听
-    if(isListen)
-        mServer->close();
 
-    return isListen;
+void tcp_server_manage::stop_listen(void)
+{
+    if(is_listen())
+        mServer->close();
 }
 
 qint64 tcp_server_manage::send(QTcpSocket* &targetSocket, const char *data)
