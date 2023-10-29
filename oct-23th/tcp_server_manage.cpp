@@ -7,30 +7,34 @@ tcp_server_manage::tcp_server_manage(QObject *parent)
 
     //新客户端连接
     connect(mServer,&QTcpServer::newConnection,parent,[&](){
-        QTcpSocket* mSocket = mServer->nextPendingConnection();
+        tcp_client_manage * mClient = new tcp_client_manage(parent);
+        mClient->mSocket = mServer->nextPendingConnection();
 
-        QString clientAddress = mSocket->peerAddress().toString();
-        quint16 clientPort = mSocket->peerPort();
+        QString clientAddress = mClient->mSocket->peerAddress().toString();
+        quint16 clientPort = mClient->mSocket->peerPort();
 
-        connect(mSocket,&QTcpSocket::disconnected,mSocket,&QTcpSocket::deleteLater);
-        connect(mSocket,&QTcpSocket::disconnected,mSocket,[=](){
+        connect(mClient->mSocket,&QTcpSocket::disconnected,mClient->mSocket,&QTcpSocket::deleteLater);
+        connect(mClient->mSocket,&QTcpSocket::disconnected,mClient->mSocket,[=](){
             qDebug()<<"用户断开:";
             qDebug()<<("ip: " + clientAddress +"    端口: "+ QString::number(clientPort));
+            auto temp = QString ("用户断开:ip: " + clientAddress +"    端口: "+ QString::number(clientPort)).toUtf8();
+            mClient->addMessage(temp);
             emit disconnected(clientAddress , clientPort);
         });
 
-        connect(mSocket,&QTcpSocket::readyRead,parent,[&](){
-            QByteArray bt=mSocket->readAll();
-            qDebug()<<"服务端收到数据："<<bt;
+        connect(mClient->mSocket,&QTcpSocket::readyRead,parent,[=](){
+            QByteArray message=mClient->mSocket->readAll();
+            mClient->addMessage(message);
+            qDebug()<<"服务端收到数据："<<message;
         });
 
-        QString str = "你好：" + clientAddress;
-        mSocket->write(str.toUtf8());
+        QString str = "你好：" + clientAddress + "    端口: "+ QString::number(clientPort);
+        mClient->mSocket->write(str.toUtf8());
         qDebug()<<"用户接入:";
-        qDebug()<<("ip: " + clientAddress +"    端口: "+ QString::number(clientPort));
+        qDebug()<<("ip: " + clientAddress + "    端口: "+ QString::number(clientPort));
 
-        socketList.append(mSocket);
-        emit newConnection(clientAddress , clientPort);
+        clientList.append(mClient);
+        emit newConnection(mClient, clientAddress , clientPort);
     });
 
 }

@@ -7,6 +7,7 @@
 #include <QtNetwork>
 #include "qtcpserver.h"
 #include "qtcpsocket.h"
+#include "tcp_client_manage.h"
 
 
 class tcp_server_manage : public QObject
@@ -24,11 +25,11 @@ private:
 public:
 
 private:
-    QTcpServer* mServer;    //tcp服务端
-    QList<QTcpSocket*> socketList;    //tcp套接字
+    QTcpServer* mServer;
+    QList<tcp_client_manage *> clientList;
 
 signals:
-    void newConnection(QString clientAddress , quint16 clientPort);
+    void newConnection(tcp_client_manage * mClient, QString clientAddress , quint16 clientPort);
     void disconnected(QString clientAddress , quint16 clientPort);
 };
 

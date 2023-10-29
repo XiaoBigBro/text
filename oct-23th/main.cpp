@@ -60,16 +60,32 @@ int main(int argc, char *argv[])
 
     QAbstractButton::connect(pUi->requestButton ,&QToolButton::clicked,pWidget,[&]() {
         //客户端发起连接请求
-        tcp_client_manage *client = new tcp_client_manage(pWidget, pUi->clientIpEdit->text(), pUi->clientPortEdit->text().toInt());
+        tcp_client_manage *client = new tcp_client_manage(pWidget);
+        client->start(pUi->clientIpEdit->text(), pUi->clientPortEdit->text().toInt());
 
         pUi->requestButton->setDisabled(true);
         //连接成功
         QAbstractAnimation::connect(client, &tcp_client_manage::connected, pWidget,[=](QString ip, quint16 port){
+            //新建标签保存对应通道指针
             tag *pTag = new tag(pUi->clientView, ip, port);
+            pTag->pClient = client;
+
             pUi->requestButton->setDisabled(false);
             //点击标签按钮断开连接
             QAbstractAnimation::connect(pTag, &tag::close, pWidget,[=](){
                 client->clear();
+            });
+
+            //点击标签显示对应聊天记录
+            QAbstractAnimation::connect(pUi->clientView, &QListWidget::itemClicked, pWidget,[=](QListWidgetItem *item){
+                pUi->recEdit->clear();
+                //找到QListWidget中item的Widget
+                QWidget *itemWidget = pUi->clientView->itemWidget(item);
+
+                //此Widget即为tag的父类指针,通过dynamic_cast强制转为其真实指针tag *
+                tag *mTag = dynamic_cast<tag*>(itemWidget);
+
+                pUi->recEdit->setText(mTag->pClient->message());
             });
         });
         //连接失败
@@ -79,11 +95,25 @@ int main(int argc, char *argv[])
         });
     });
 
-    QAbstractAnimation::connect(myServer ,&tcp_server_manage::newConnection,pWidget,[&](QString ip, quint16 port) {
+    QAbstractAnimation::connect(myServer ,&tcp_server_manage::newConnection,pWidget,[&](tcp_client_manage * client, QString ip, quint16 port) {
         tag *pTag = new tag(pUi->servetView, ip, port);
-        pUi->requestButton->setDisabled(false);
+        pTag->pClient = client;
+
         //点击标签按钮断开连接
         QAbstractAnimation::connect(pTag, &tag::close, pWidget,[=](){
+            client->clear();
+        });
+
+        //点击标签显示对应聊天记录
+        QAbstractAnimation::connect(pUi->servetView, &QListWidget::itemClicked, pWidget,[=](QListWidgetItem *item){
+            pUi->recEdit->clear();
+            //找到QListWidget中item的Widget
+            QWidget *itemWidget = pUi->servetView->itemWidget(item);
+
+            //此Widget即为tag的父类指针,通过dynamic_cast强制转为其真实指针tag *
+            tag *mTag = dynamic_cast<tag*>(itemWidget);
+
+            pUi->recEdit->setText(mTag->pClient->message());
         });
     });
 
