@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
     });
 
 
+
     //请求连接
     QAbstractButton::connect(pUi->requestButton ,&QToolButton::clicked,pWidget,[&]() {
 
@@ -70,25 +71,27 @@ int main(int argc, char *argv[])
     });
 
 
-    //按键样式设置效果
-    QAbstractButton::connect(pUi->requestButton ,&QToolButton::pressed,pWidget,[&]() {
-        pUi->requestButton->setStyleSheet("background-color:#000000;");
+
+
+
+    //按键效果
+    QAbstractAnimation::connect(pUi->clientButton ,&QToolButton::clicked,pWidget,[&]() {
+        pUi->clientButton->setStyleSheet("background-color: rgb(0, 0, 0);"
+                                             "border-radius:6px;"
+                                         "border:2px solid #000000;");
+        pUi->serverButton->setStyleSheet(  "border-radius:6px;"
+                                         "border:2px solid #000000;"
+                                         );
     });
-    QAbstractButton::connect(pUi->requestButton ,&QToolButton::released,pWidget,[&]() {
-         pUi->requestButton->setStyleSheet("background-color:#c3e9e5;");
+    QAbstractAnimation::connect(pUi->serverButton ,&QToolButton::clicked,pWidget,[&]() {
+        pUi->serverButton->setStyleSheet("background-color: rgb(0, 0, 0);"
+                                         "border-radius:6px;"
+                                         "border:2px solid #000000;");
+        pUi->clientButton->setStyleSheet(  "border-radius:6px;"
+                                         "border:2px solid #000000;"
+                                         );
     });
-    QAbstractButton::connect(pUi->monitorButton ,&QToolButton::pressed,pWidget,[&]() {
-        pUi->monitorButton->setStyleSheet("background-color:#000000;");
-    });
-    QAbstractButton::connect(pUi->monitorButton ,&QToolButton::released,pWidget,[&]() {
-        pUi->monitorButton->setStyleSheet("background-color:#c3e9e5;");
-    });
-    QAbstractButton::connect(pUi->sendButton ,&QToolButton::pressed,pWidget,[&]() {
-        pUi->sendButton->setStyleSheet("background-color:#000000;");
-    });
-    QAbstractButton::connect(pUi->sendButton ,&QToolButton::released,pWidget,[&]() {
-        pUi->sendButton->setStyleSheet("background-color:#c3e9e5;");
-    });
+
 
 
 

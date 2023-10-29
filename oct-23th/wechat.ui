@@ -72,7 +72,7 @@
        <number>4</number>
       </property>
       <property name="topMargin">
-       <number>25</number>
+       <number>5</number>
       </property>
       <property name="rightMargin">
        <number>4</number>
@@ -118,7 +118,18 @@
          <enum>Qt::LeftToRight</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolButton:hover{
+	background-color: rgb(0, 0, 0);
+}
+QToolButton{
+  border-radius:6px;
+  border:2px solid #000000;
+}
+QToolButton::pressed
+{
+	padding-bottom:8px;
+}
+</string>
         </property>
         <property name="text">
          <string>客户端</string>
@@ -150,7 +161,18 @@
          <enum>Qt::WheelFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolButton:hover{
+	background-color: rgb(0, 0, 0);
+}
+QToolButton{
+  border-radius:6px;
+  border:2px solid #000000;
+}
+QToolButton::pressed
+{
+	padding-bottom:8px;
+}
+</string>
         </property>
         <property name="text">
          <string>服务端</string>
@@ -198,7 +220,19 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background:rgb(190, 192, 193)</string>
+         <string notr="true">QToolButton:hover{
+	background-color: rgb(107, 107, 107);
+}
+QToolButton{
+	background-color: rgb(190, 190, 190);
+  border-radius:6px;
+  border:2px solid #000000;
+}
+QToolButton::pressed
+{
+	padding-top:8px;
+}
+</string>
         </property>
         <property name="text">
          <string>待开发</string>
@@ -381,8 +415,32 @@
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="whatsThis">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
                      <property name="styleSheet">
-                      <string notr="true">background-color:#c3e9e5;</string>
+                      <string notr="true">QToolButton
+{
+border:1px solid #ffffff;
+	border-radius:4px;
+	color: rgb(0, 206, 0);
+	background-color: rgb(231, 231, 231);
+	font-size:10pt;
+}
+QToolButton::pressed
+{
+	padding-bottom:0px;
+		color: rgb(0, 106, 0);
+
+}
+QToolButton::hover
+{
+	background-color: rgb(197, 197, 197);
+}
+
+
+
+</string>
                      </property>
                      <property name="text">
                       <string>请求连接</string>
@@ -560,7 +618,23 @@
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">background-color:#c3e9e5;</string>
+                      <string notr="true">QToolButton
+{
+	border:1px solid #ffffff;
+	border-radius:4px;
+	color: rgb(0, 206, 0);
+	background-color: rgb(231, 231, 231);
+	font-size:10pt;
+}
+QToolButton::pressed
+{
+	padding-bottom:0px;
+	color: rgb(0, 106, 0);
+}
+QToolButton::hover
+{
+	background-color: rgb(197, 197, 197);
+}</string>
                      </property>
                      <property name="text">
                       <string>开始监听</string>
@@ -677,6 +751,9 @@
              </property>
              <item>
               <widget class="QTextEdit" name="recEdit">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
@@ -800,11 +877,36 @@
                    <height>0</height>
                   </size>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
                  <property name="styleSheet">
-                  <string notr="true">background-color:#c3e9e5;</string>
+                  <string notr="true">QToolButton
+{
+border:1px solid #ffffff;
+	border-radius:4px;
+	color: rgb(0, 206, 0);
+	background-color: rgb(231, 231, 231);
+	font-size:10pt;
+}
+QToolButton::pressed
+{
+	padding-bottom:0px;	
+	color: rgb(0, 106, 0);
+}
+QToolButton::hover
+{
+	background-color: rgb(197, 197, 197);
+}</string>
                  </property>
                  <property name="text">
                   <string>发送</string>
+                 </property>
+                 <property name="shortcut">
+                  <string>Return</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>false</bool>
                  </property>
                  <property name="autoRaise">
                   <bool>true</bool>
