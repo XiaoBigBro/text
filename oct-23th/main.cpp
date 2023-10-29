@@ -79,8 +79,6 @@ int main(int argc, char *argv[])
             pUi->requestButton->setDisabled(false);
         });
     });
-
-
     QAbstractAnimation::connect(myServer ,&tcp_server_manage::newConnection,pWidget,[&](QString ip, quint16 port) {
         new tag(pUi->servetView, ip, port);
     });
@@ -96,21 +94,27 @@ int main(int argc, char *argv[])
 
     });
 
-    //按键样式设置效果
-    QAbstractButton::connect(pUi->requestButton ,&QToolButton::pressed,pWidget,[&]() {
-        pUi->requestButton->setStyleSheet("background-color:#000000;");
-    });
-    QAbstractButton::connect(pUi->requestButton ,&QToolButton::released,pWidget,[&]() {
-         pUi->requestButton->setStyleSheet("background-color:#c3e9e5;");
-    });
-    QAbstractButton::connect(pUi->monitorButton ,&QToolButton::pressed,pWidget,[&]() {
-        pUi->monitorButton->setStyleSheet("background-color:#000000;");
-    });
+
+
+
+
+
+
+
+    //按键效果
     QAbstractAnimation::connect(pUi->serverButton ,&QToolButton::clicked,pWidget,[&]() {
         pUi->serverButton->setStyleSheet("background-color: rgb(0, 0, 0);"
                                          "border-radius:6px;"
                                          "border:2px solid #000000;");
         pUi->clientButton->setStyleSheet(  "border-radius:6px;"
+                                         "border:2px solid #000000;"
+                                         );
+    });
+    QAbstractAnimation::connect(pUi->clientButton ,&QToolButton::clicked,pWidget,[&]() {
+        pUi->clientButton->setStyleSheet("background-color: rgb(0, 0, 0);"
+                                         "border-radius:6px;"
+                                         "border:2px solid #000000;");
+        pUi->serverButton->setStyleSheet(  "border-radius:6px;"
                                          "border:2px solid #000000;"
                                          );
     });

@@ -122,6 +122,7 @@
 	background-color: rgb(0, 0, 0);
 }
 QToolButton{
+background-color: rgb(0, 0, 0);
   border-radius:6px;
   border:2px solid #000000;
 }
@@ -429,15 +430,13 @@ border:1px solid #ffffff;
 }
 QToolButton::pressed
 {
-	padding-bottom:0px;
-		color: rgb(0, 106, 0);
-
+	padding-bottom:0px;	
+	color: rgb(0, 106, 0);
 }
 QToolButton::hover
 {
 	background-color: rgb(197, 197, 197);
 }
-
 
 
 </string>
@@ -580,7 +579,7 @@ QToolButton::hover
                      <property name="styleSheet">
                       <string notr="true">QToolButton
 {
-	border:1px solid #ffffff;
+border:1px solid #ffffff;
 	border-radius:4px;
 	color: rgb(0, 206, 0);
 	background-color: rgb(231, 231, 231);
@@ -588,7 +587,7 @@ QToolButton::hover
 }
 QToolButton::pressed
 {
-	padding-bottom:0px;
+	padding-bottom:0px;	
 	color: rgb(0, 106, 0);
 }
 QToolButton::hover
