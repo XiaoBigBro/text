@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QAbstractSocket>
 #include <QPushButton>
+#include <QListView>
 
 #include "ui_wechat.h"
 
@@ -34,10 +35,8 @@ QString get_local_addresses(int mVersions){
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
     pUi = new Ui_Widget;
     pWidget = new QWidget;
-
     pUi->setupUi(pWidget);
     pWidget->show();
 
@@ -58,7 +57,6 @@ int main(int argc, char *argv[])
         auto sendData = pUi->sendEdit->toPlainText().toUtf8();
         pUi->sendEdit->clear();
     });
-
 
     //请求连接
     QAbstractButton::connect(pUi->requestButton ,&QToolButton::clicked,pWidget,[&]() {
