@@ -25,6 +25,8 @@ tcp_server_manage::tcp_server_manage(QObject *parent)
         connect(mClient->mSocket,&QTcpSocket::readyRead,parent,[=](){
             QByteArray message=mClient->mSocket->readAll();
             mClient->addMessage(message);
+            auto temp = QString ("\n").toUtf8();
+            mClient->addMessage(temp);
             qDebug()<<"服务端收到数据："<<message;
         });
 
