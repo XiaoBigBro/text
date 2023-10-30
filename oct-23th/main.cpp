@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
                                          "border-radius:6px;"
                                          "border:2px solid #000000;");
         pUi->clientButton->setStyleSheet(  "border-radius:6px;"
-                                         "border:2px solid #000000;"
+                                         "border:2px solid #2e2e2e;"
                                          );
     });
     QAbstractAnimation::connect(pUi->clientButton ,&QToolButton::clicked,pWidget,[&]() {
@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
                                          "border-radius:6px;"
                                          "border:2px solid #000000;");
         pUi->serverButton->setStyleSheet(  "border-radius:6px;"
-                                         "border:2px solid #000000;"
+                                         "border:2px solid #2e2e2e;"
                                          );
     });
 

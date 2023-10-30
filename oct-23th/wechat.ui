@@ -124,12 +124,9 @@
 QToolButton{
 background-color: rgb(0, 0, 0);
   border-radius:6px;
-  border:2px solid #000000;
+  border:2px solid #2e2e2e;
 }
-QToolButton::pressed
-{
-	padding-bottom:8px;
-}
+
 </string>
         </property>
         <property name="text">
@@ -167,12 +164,9 @@ QToolButton::pressed
 }
 QToolButton{
   border-radius:6px;
-  border:2px solid #000000;
+  border:2px solid #2e2e2e;
 }
-QToolButton::pressed
-{
-	padding-bottom:8px;
-}
+
 </string>
         </property>
         <property name="text">

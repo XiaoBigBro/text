@@ -34,6 +34,12 @@
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(173, 173, 173);
+}
+</string>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
     <number>8</number>
@@ -107,7 +113,11 @@
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">QLabel{
+	color: rgb(0, 0, 0);
+background-color: rgb(194, 194, 194);
+}
+</string>
        </property>
        <property name="text">
         <string>ip:</string>
@@ -122,6 +132,12 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	color: rgb(0, 0, 0);
+background-color: rgb(194, 194, 194);
+}</string>
+       </property>
        <property name="text">
         <string>port:</string>
        </property>
@@ -131,12 +147,16 @@
    </item>
    <item>
     <widget class="QToolButton" name="closeButton">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255,0);
+</string>
+     </property>
      <property name="text">
       <string>...</string>
      </property>
      <property name="icon">
       <iconset resource="res.qrc">
-       <normaloff>:/icon/x.png</normaloff>:/icon/x.png</iconset>
+       <normaloff>:/icon/ellipsis.png</normaloff>:/icon/ellipsis.png</iconset>
      </property>
      <property name="autoRaise">
       <bool>true</bool>

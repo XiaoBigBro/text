@@ -4,5 +4,6 @@
         <file>icon/server2.png</file>
         <file>icon/x.png</file>
         <file>icon/wechat.jpg</file>
+        <file>icon/ellipsis.png</file>
     </qresource>
 </RCC>
