@@ -14,6 +14,7 @@
 Ui_Widget *pUi ;
 QWidget *pWidget;
 tcp_server_manage *myServer;
+tcp_client_manage *currentSession;
 
 QString get_local_addresses(int mVersions){
     //只查找ipv4和ipv6
@@ -53,11 +54,6 @@ int main(int argc, char *argv[])
         pUi->stackedWidget->setCurrentIndex(0);
     });
 
-    QAbstractButton::connect(pUi->sendButton ,&QToolButton::clicked,pWidget,[&]() {
-        auto sendData = pUi->sendEdit->toPlainText().toUtf8();
-        pUi->sendEdit->clear();
-    });
-
     QAbstractButton::connect(pUi->requestButton ,&QToolButton::clicked,pWidget,[&]() {
         //客户端发起连接请求
         tcp_client_manage *client = new tcp_client_manage(pWidget);
@@ -66,7 +62,7 @@ int main(int argc, char *argv[])
         pUi->requestButton->setDisabled(true);
         //连接成功
         QAbstractAnimation::connect(client, &tcp_client_manage::connected, pWidget,[=](QString ip, quint16 port){
-            //新建标签保存对应通道指针
+            //新建标签保存对应通会话指针
             tag *pTag = new tag(pUi->clientView, ip, port);
             pTag->pClient = client;
 
@@ -86,6 +82,10 @@ int main(int argc, char *argv[])
                 tag *mTag = dynamic_cast<tag*>(itemWidget);
 
                 pUi->recEdit->setText(mTag->pClient->message());
+
+                currentSession = mTag->pClient;
+                QString title = "客户端\nip: " + currentSession->local_address() + " port: " + QString::number(currentSession->local_port());
+                pUi->nameLabel->setText(title);
             });
         });
         //连接失败
@@ -96,6 +96,7 @@ int main(int argc, char *argv[])
     });
 
     QAbstractAnimation::connect(myServer ,&tcp_server_manage::newConnection,pWidget,[&](tcp_client_manage * client, QString ip, quint16 port) {
+        //新建标签保存对应通会话指针
         tag *pTag = new tag(pUi->servetView, ip, port);
         pTag->pClient = client;
 
@@ -114,6 +115,10 @@ int main(int argc, char *argv[])
             tag *mTag = dynamic_cast<tag*>(itemWidget);
 
             pUi->recEdit->setText(mTag->pClient->message());
+
+            currentSession = mTag->pClient;
+            QString title = "服务端\nip: " + currentSession->local_address() + " port: " + QString::number(currentSession->local_port());
+            pUi->nameLabel->setText(title);
         });
     });
 
@@ -126,6 +131,15 @@ int main(int argc, char *argv[])
             pUi->monitorButton->setText("停止监听");
         }
     });
+
+    QAbstractAnimation::connect(pUi->sendButton ,&QToolButton::clicked,pWidget,[&]() {
+        if(currentSession == nullptr)
+            return;
+        auto sendMessage = pUi->sendEdit->toPlainText().toUtf8();
+        qDebug()<<sendMessage;
+        currentSession->sendMessage(sendMessage);
+    });
+
 
     //按键效果
     QAbstractAnimation::connect(pUi->serverButton ,&QToolButton::clicked,pWidget,[&]() {
