@@ -6,7 +6,6 @@
 
 #include <QtNetwork>
 #include "qtcpserver.h"
-#include "qtcpsocket.h"
 #include "tcp_client_manage.h"
 
 
@@ -18,7 +17,6 @@ public:
     bool is_listen(void);
     void start_listen(const QHostAddress &address = QHostAddress::Any, quint16 port = 80);
     void stop_listen(void);
-    qint64 send(QTcpSocket* &targetSocket, const char *data);
 
 private:
 

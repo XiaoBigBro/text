@@ -13,7 +13,6 @@ tcp_server_manage::tcp_server_manage(QObject *parent)
         QString clientAddress = mClient->mSocket->peerAddress().toString();
         quint16 clientPort = mClient->mSocket->peerPort();
 
-        connect(mClient->mSocket,&QTcpSocket::disconnected,mClient->mSocket,&QTcpSocket::deleteLater);
         connect(mClient->mSocket,&QTcpSocket::disconnected,mClient->mSocket,[=](){
             qDebug()<<"用户断开:";
             qDebug()<<("ip: " + clientAddress +"    端口: "+ QString::number(clientPort));
@@ -65,16 +64,3 @@ void tcp_server_manage::stop_listen(void)
     if(is_listen())
         mServer->close();
 }
-
-qint64 tcp_server_manage::send(QTcpSocket* &targetSocket, const char *data)
-{
-    if(mServer->isListening() && targetSocket->isOpen()){
-        qDebug()<<"发送失败，检查连接";
-        return -1;
-    }
-
-    return targetSocket->write(data);
-
-}
-
-

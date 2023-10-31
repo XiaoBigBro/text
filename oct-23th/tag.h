@@ -17,6 +17,7 @@ public:
     explicit tag(QListWidget* mListWidget ,const QString &hostName = "127.0.0.1", const quint16 &port = 80);
     ~tag();
     tcp_client_manage *pClient;
+    QString name;
 
 private:
     QListWidgetItem *item;
