@@ -74,23 +74,23 @@ int main(int argc, char *argv[])
 
             //点击标签显示对应聊天记录
             QAbstractAnimation::connect(pUi->clientView, &QListWidget::itemClicked, pWidget,[=](QListWidgetItem *item){
-                pUi->recEdit->clear();
                 //找到QListWidget中item的Widget
                 QWidget *itemWidget = pUi->clientView->itemWidget(item);
 
                 //此Widget即为tag的父类指针,通过dynamic_cast强制转为其真实指针tag *
                 tag *mTag = dynamic_cast<tag*>(itemWidget);
 
+                pUi->recEdit->clear();
                 pUi->recEdit->setText(mTag->pClient->message());
 
                 currentSession = mTag->pClient;
-                QString title = "客户端\nip: " + currentSession->local_address() + " port: " + QString::number(currentSession->local_port());
+                QString title = "客户端\n" + mTag->name;
                 pUi->nameLabel->setText(title);
             });
         });
         //连接失败
         QAbstractAnimation::connect(client, &tcp_client_manage::errorOccurred, pWidget,[&](QString message){
-            QMessageBox::information(NULL, "tcp请求连接失败", message);
+            QMessageBox::information(NULL, "tcp错误信息", message);
             pUi->requestButton->setDisabled(false);
         });
     });
@@ -107,17 +107,17 @@ int main(int argc, char *argv[])
 
         //点击标签显示对应聊天记录
         QAbstractAnimation::connect(pUi->servetView, &QListWidget::itemClicked, pWidget,[=](QListWidgetItem *item){
-            pUi->recEdit->clear();
             //找到QListWidget中item的Widget
             QWidget *itemWidget = pUi->servetView->itemWidget(item);
 
             //此Widget即为tag的父类指针,通过dynamic_cast强制转为其真实指针tag *
             tag *mTag = dynamic_cast<tag*>(itemWidget);
 
+            pUi->recEdit->clear();
             pUi->recEdit->setText(mTag->pClient->message());
 
             currentSession = mTag->pClient;
-            QString title = "服务端\nip: " + currentSession->local_address() + " port: " + QString::number(currentSession->local_port());
+            QString title = "服务端\n" + mTag->name;
             pUi->nameLabel->setText(title);
         });
     });

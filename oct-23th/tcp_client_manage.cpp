@@ -58,8 +58,7 @@ void tcp_client_manage::close()
 void tcp_client_manage::clear()
 {
     close();
-    delete mSocket;
-    delete this;
+    //内存泄露
 }
 
 QString tcp_client_manage::local_address()
@@ -84,7 +83,7 @@ void tcp_client_manage::addMessage(QByteArray& message)
 
 void tcp_client_manage::sendMessage(QByteArray& message)
 {
-    if(mSocket->isOpen())
+    if(mSocket->isValid())
         mSocket->write(message);
     else
         qDebug()<<"未建立连接";

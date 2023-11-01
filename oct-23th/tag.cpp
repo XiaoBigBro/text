@@ -10,6 +10,7 @@ tag::tag(QListWidget *mListWidget, const QString &hostName, const quint16 &port)
 
     ui->ip->setText("ip: " + hostName);
     ui->port->setText("port: " + QString::number(port));
+    name = ui->ip->text() + ui->port->text();
 
     ui->ip->setStyleSheet("background-color: transparent;");
     ui->port->setStyleSheet("background-color: transparent;");
