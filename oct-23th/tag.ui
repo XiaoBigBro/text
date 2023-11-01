@@ -146,7 +146,7 @@ background-color: rgb(194, 194, 194);
     </layout>
    </item>
    <item>
-    <widget class="QToolButton" name="closeButton">
+    <widget class="QToolButton" name="extendButton">
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255,0);
 </string>

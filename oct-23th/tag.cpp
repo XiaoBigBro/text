@@ -1,8 +1,11 @@
 #include "tag.h"
 #include "ui_tag.h"
+#include "extend.h"
+
 
 tag::tag(QListWidget *mListWidget, const QString &hostName, const quint16 &port) : ui(new Ui::tag)
 {
+
     ui->setupUi(this);
 
     ui->ip->setText("ip: " + hostName);
@@ -17,14 +20,24 @@ tag::tag(QListWidget *mListWidget, const QString &hostName, const quint16 &port)
         mListWidget->setItemWidget(item,this);
     }
 
-    connect(ui->closeButton,&QToolButton::clicked, mListWidget, [=](){
-        //从列表中移除item
-        auto p = mListWidget->takeItem(mListWidget->row(item));
-        emit close();
-    });
 }
+
+
+
+
 
 tag::~tag()
 {
     delete ui;
 }
+
+
+
+void tag::on_extendButton_clicked()
+{
+    extend *one = new extend;
+    one->show();
+    QPoint globalPos =this->mapToGlobal(QPoint(0, 0));
+    one->move(globalPos.x() + 180, globalPos.y() + 40);
+}
+
