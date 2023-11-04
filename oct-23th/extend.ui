@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>80</width>
-    <height>96</height>
+    <height>72</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,97 +17,9 @@
    <string notr="true"/>
   </property>
   <property name="styleSheet">
-   <string notr="true">	background-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: rgb(255, 255, 255);
+</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="spacing">
-    <number>0</number>
-   </property>
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
-   <item>
-    <widget class="QPushButton" name="topButton">
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	border: 0;
-	color: rgb(0, 0, 0);
-	background-color: rgb(255, 255, 255);
-}  
-QPushButton:hover{
-	background-color: rgb(148, 148, 148);
-
-}</string>
-     </property>
-     <property name="text">
-      <string>置顶</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="unreadButton">
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	border: 0;
-	color: rgb(0, 0, 0);
-	background-color: rgb(255, 255, 255);
-}  
-QPushButton:hover{
-	background-color: rgb(148, 148, 148);
-
-}</string>
-     </property>
-     <property name="text">
-      <string>标为未读</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="deleteButton">
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	border: 0;
-	color: rgb(0, 0, 0);
-	background-color: rgb(255, 255, 255);
-}  
-QPushButton:hover{
-	background-color: rgb(148, 148, 148);
-
-}</string>
-     </property>
-     <property name="text">
-      <string>删除</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="pushButton_4">
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	border: 0;
-	color: rgb(0, 0, 0);
-	background-color: rgb(255, 255, 255);
-}  
-QPushButton:hover{
-	background-color: rgb(148, 148, 148);
-
-}</string>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-   </item>
-  </layout>
  </widget>
  <resources/>
  <connections/>

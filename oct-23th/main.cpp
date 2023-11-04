@@ -137,6 +137,7 @@ int main(int argc, char *argv[])
             return;
         auto sendMessage = pUi->sendEdit->toPlainText().toUtf8();
         qDebug()<<sendMessage;
+        pUi->sendEdit->clear();
         currentSession->sendMessage(sendMessage);
     });
 

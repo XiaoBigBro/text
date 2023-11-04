@@ -21,10 +21,11 @@ public:
 private:
     QListWidgetItem *item;
     Ui::tag *ui;
+    QWidget *sign;
 signals:
     void close();
-private slots:
-    void on_extendButton_clicked();
+
+
 };
 
 #endif // TAG_H
